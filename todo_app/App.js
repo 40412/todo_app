@@ -1,47 +1,35 @@
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
 import { Login } from "./screens/login/login";
+import { Profile } from "./screens/profile/profile";
 import { Signup } from "./screens/signup/signup";
 import { Todos } from "./screens/todos/todoScreen";
 
 const Stack = createNativeStackNavigator();
-
-const LoginStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={Signup} />
-    </Stack.Navigator>
-  );
-};
+const Tab = createBottomTabNavigator();
 
 const MainContent = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Todos" component={Todos} />
-    </Stack.Navigator>
+    <Tab.Navigator>
+      <Tab.Screen name="Todos" component={Todos} />
+      <Tab.Screen name="Profile" component={Profile} />
+    </Tab.Navigator>
   );
 };
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Todos />
-      {/* <NavigationContainer>
-        <MainContent />
-        <LoginStack />
-      </NavigationContainer> */}
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={Signup} />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Main"
+          component={MainContent}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
