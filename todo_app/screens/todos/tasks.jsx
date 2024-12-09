@@ -21,14 +21,14 @@ export const Tasks = ({ tasks }) => {
 const styles = StyleSheet.create({
   taskItem: {
     height: 40,
-    backgroundColor: "pink",
-    borderRadius: 8,
+    backgroundColor: "#FFCCE1",
+    borderRadius: 10,
     marginVertical: 10,
     marginHorizontal: 20,
   },
   text: {
     fontSize: 15,
-    color: "blue",
+    color: "black",
     padding: 5,
   },
 });
