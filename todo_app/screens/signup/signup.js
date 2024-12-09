@@ -7,8 +7,8 @@ export const Signup = ({ navigation }) => {
   };
   return (
     <>
-      <Text style={globalStyles.pageTitle}>Sign Up</Text>
-      <Button title="Sign Up" onPress={handleSignup} />
+      <Text style={globalStyles.buttonText}>Sign Up</Text>
+      <Button title="Sign Up" onPress={handleSignup} style={globalStyles.button} />
     </>
   );
 };
