@@ -1,4 +1,4 @@
-import { Button, Text } from "react-native";
+import { Pressable, Text } from "react-native";
 import { globalStyles } from "../../constants/styles";
 
 export const Signup = ({ navigation }) => {
@@ -7,8 +7,9 @@ export const Signup = ({ navigation }) => {
   };
   return (
     <>
-      <Text style={globalStyles.buttonText}>Sign Up</Text>
-      <Button title="Sign Up" onPress={handleSignup} style={globalStyles.button} />
+      <Pressable style={globalStyles.button} onPress={handleSignup}>
+        <Text style={globalStyles.buttonText}>Sign Up</Text>
+      </Pressable>
     </>
   );
 };
