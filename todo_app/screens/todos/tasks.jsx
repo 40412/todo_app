@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 
 export const Tasks = ({ tasks }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={tasks}
         renderItem={({ item }) => {
@@ -19,6 +19,9 @@ export const Tasks = ({ tasks }) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 2,
+  },
   taskItem: {
     height: 40,
     backgroundColor: "#FFCCE1",

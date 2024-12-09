@@ -20,6 +20,7 @@ export const AddTask = ({ currentValue, setValue, addTask }) => {
 
 const styles = StyleSheet.create({
   innerContainer: {
+    flex: 1,
     marginTop: 10,
     paddingTop: 10,
     width: "80%",
