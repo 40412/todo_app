@@ -21,7 +21,7 @@ export const Tasks = ({ tasks }) => {
 const styles = StyleSheet.create({
   taskItem: {
     height: 40,
-    backgroundColor: "pink",
+    backgroundColor: "lightblue",
     borderRadius: 8,
     marginVertical: 10,
     marginHorizontal: 20,
