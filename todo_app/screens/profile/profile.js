@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { globalStyles } from "../../constants/styles";
 
 export const Profile = ({ navigation }) => {
@@ -10,9 +10,17 @@ export const Profile = ({ navigation }) => {
     });
   };
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={globalStyles.pageTitle}>My Profile</Text>
-      <Button title="Log Out" onPress={handleLogOut} />
+      <Pressable style={globalStyles.button} onPress={handleLogOut}>
+        <Text style={globalStyles.buttonText}>Log Out</Text>
+      </Pressable>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
+});
