@@ -32,6 +32,7 @@ export const login = async (email, password) => {
   );
   const idToken = response.data.idToken;
   await storeToken(idToken);
+  await SecureStore.setItemAsync("email", response.data.email);
   return response;
 };
 
@@ -56,6 +57,7 @@ export const getToken = async () => {
 export const logout = async () => {
   try {
     await SecureStore.deleteItemAsync("token");
+    await SecureStore.deleteItemAsync("email");
   } catch (error) {
     console.error("Error removing token", error);
   }

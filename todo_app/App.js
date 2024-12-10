@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -12,9 +13,33 @@ const Tab = createBottomTabNavigator();
 const MainContent = ({ route }) => {
   const { message } = route.params || {};
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Todos" component={Todos} initialParams={{ message }} />
-      <Tab.Screen name="Profile" component={Profile} />
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: "#fff",
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Todos"
+        component={Todos}
+        initialParams={{ message }}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="documents-outline" size={size} color={color} />
+          ),
+          unmountOnBlur: true,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-outline" size={size} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };

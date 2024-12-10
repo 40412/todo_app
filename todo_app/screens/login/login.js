@@ -24,6 +24,11 @@ export const Login = ({ navigation }) => {
     }
   };
 
+  const debugLogin = async () => {
+    await login("testuser@email.com", "password123");
+    navigation.replace("Main", { message: message });
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -58,6 +63,7 @@ export const Login = ({ navigation }) => {
         >
           <Text style={globalStyles.buttonText}>Sign Up</Text>
         </Pressable>
+        {/* <Button title="debug" onPress={debugLogin}></Button> */}
       </View>
     </View>
   );
