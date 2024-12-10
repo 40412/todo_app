@@ -18,7 +18,7 @@ export const SignUpScreen = ({ navigation }) => {
     try {
       const response = await createNewUser(text, password);
       Alert.alert("Success", "User created successfully!");
-      navigation.replace("Main");
+      navigation.replace("Login");
     } catch (error) {
       Alert.alert("An error occurred!", JSON.stringify(error));
     }

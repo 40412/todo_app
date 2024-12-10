@@ -28,6 +28,7 @@ const MainContent = ({ route }) => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="documents-outline" size={size} color={color} />
           ),
+          unmountOnBlur: true,
         }}
       />
       <Tab.Screen
