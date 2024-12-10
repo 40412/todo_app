@@ -13,13 +13,14 @@ import { login } from "../../util/authentication";
 export const Login = ({ navigation }) => {
   const [text, onChangeText] = useState("");
   const [password, onChangePassword] = useState("");
+  const [message, setMessage] = useState("");
 
   const loginHandler = async () => {
     try {
       const response = await login(text, password);
-      navigation.replace("Main");
+      navigation.replace("Main", { message: message });
     } catch (error) {
-      Alert.alert("An error occurred!", JSON.stringify(error));
+      Alert.alert("An error occurred! Check your credentials");
     }
   };
 
@@ -40,6 +41,12 @@ export const Login = ({ navigation }) => {
         placeholder="Password"
         secureTextEntry={true}
         autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={setMessage}
+        value={message}
+        placeholder="Send a message!"
       />
       <View style={styles.buttonContainer}>
         <Pressable style={globalStyles.button} onPress={loginHandler}>
