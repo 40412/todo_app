@@ -1,12 +1,9 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { globalStyles } from "../../constants/styles";
 
 export const AddTask = ({ currentValue, setValue, addTask }) => {
   return (
     <View style={styles.innerContainer}>
-      <Pressable style={styles.button} onPress={() => addTask(currentValue)}>
-        <Text style={styles.buttonText}>Add Task</Text>
-      </Pressable>
-
       <TextInput
         id="input"
         style={styles.input}
@@ -14,6 +11,12 @@ export const AddTask = ({ currentValue, setValue, addTask }) => {
         value={currentValue}
         onChangeText={setValue}
       />
+      <Pressable
+        style={globalStyles.button}
+        onPress={() => addTask(currentValue)}
+      >
+        <Text style={globalStyles.buttonText}>Add Task</Text>
+      </Pressable>
     </View>
   );
 };
@@ -23,27 +26,18 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 10,
     width: "80%",
-    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-  },
-  button: {
-    flex: 1,
-    padding: 10,
-    marginRight: 20,
-    width: "35%",
-    backgroundColor: "blue",
-  },
-  buttonText: {
-    fontSize: 15,
-    textAlign: "center",
-    color: "white",
+    width: "100%",
   },
   input: {
-    flex: 2,
     textAlign: "center",
     fontSize: 15,
     padding: 3,
     height: 45,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 4,
+    width: "100%",
   },
 });

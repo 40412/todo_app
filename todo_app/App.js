@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { login } from "./util/authentication";
+import { Login } from "./screens/login/login";
 import { Profile } from "./screens/profile/profile";
-import { createNewUser } from "./util/authentication";
+import { SignUpScreen } from "./screens/signup/signup";
 import { Todos } from "./screens/todos/todoScreen";
 
 const Stack = createNativeStackNavigator();
@@ -18,13 +18,12 @@ const MainContent = () => {
   );
 };
 
-
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={login} />
-        <Stack.Screen name="SignUp" component={createNewUser} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen
           options={{ headerShown: false }}
           name="Main"

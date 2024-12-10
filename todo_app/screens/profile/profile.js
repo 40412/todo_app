@@ -1,18 +1,28 @@
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { globalStyles } from "../../constants/styles";
+import { logout } from "../../util/authentication";
 
 export const Profile = ({ navigation }) => {
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    await logout();
     navigation.reset({
       index: 0,
       routes: [{ name: "Login" }],
     });
   };
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={globalStyles.pageTitle}>My Profile</Text>
-      <Button title="Log Out" onPress={handleLogOut} />
+      <Pressable style={globalStyles.button} onPress={handleLogOut}>
+        <Text style={globalStyles.buttonText}>Log Out</Text>
+      </Pressable>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+  },
+});
