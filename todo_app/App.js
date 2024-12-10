@@ -9,10 +9,11 @@ import { Todos } from "./screens/todos/todoScreen";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const MainContent = () => {
+const MainContent = ({ route }) => {
+  const { message } = route.params || {};
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Todos" component={Todos} />
+      <Tab.Screen name="Todos" component={Todos} initialParams={{ message }} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

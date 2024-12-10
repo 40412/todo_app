@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { AddTask } from "./addTask";
 import { Tasks } from "./tasks";
 
-export const Todos = () => {
+export const Todos = ({ route }) => {
   const [tasks, setTasks] = useState([]);
   const [currentValue, setValue] = useState("");
+
+  const { message } = route.params;
 
   const addTask = (task) => {
     if (task) {
@@ -16,6 +18,7 @@ export const Todos = () => {
 
   return (
     <View style={styles.container}>
+      {message && <Text>{message}</Text>}
       <AddTask
         currentValue={currentValue}
         addTask={addTask}
