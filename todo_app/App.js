@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Login } from "./screens/login/login";
 import { Profile } from "./screens/profile/profile";
-import { Signup } from "./screens/signup/signup";
+import { SignUpScreen } from "./screens/signup/signup";
 import { Todos } from "./screens/todos/todoScreen";
 
 const Stack = createNativeStackNavigator();
@@ -23,7 +23,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignUp" component={Signup} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen
           options={{ headerShown: false }}
           name="Main"

@@ -1,13 +1,26 @@
-import { useState } from "react";
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import {
+  Alert,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { globalStyles } from "../../constants/styles";
+import { login } from "../../util/authentication";
 
 export const Login = ({ navigation }) => {
   const [text, onChangeText] = useState("");
   const [password, onChangePassword] = useState("");
 
-  const handleLogin = () => {
-    navigation.replace("Main");
+  const loginHandler = async () => {
+    try {
+      const response = await login(text, password);
+      navigation.replace("Main");
+    } catch (error) {
+      Alert.alert("An error occurred!", JSON.stringify(error));
+    }
   };
 
   return (
@@ -17,16 +30,19 @@ export const Login = ({ navigation }) => {
         onChangeText={onChangeText}
         value={text}
         placeholder="Username"
+        autoCapitalize="none"
+        keyboardType="email-address"
       />
       <TextInput
         style={styles.input}
         onChangeText={onChangePassword}
-        value={text}
+        value={password}
         placeholder="Password"
         secureTextEntry={true}
+        autoCapitalize="none"
       />
       <View style={styles.buttonContainer}>
-        <Pressable style={globalStyles.button} onPress={handleLogin}>
+        <Pressable style={globalStyles.button} onPress={loginHandler}>
           <Text style={globalStyles.buttonText}>Login</Text>
         </Pressable>
         <Pressable

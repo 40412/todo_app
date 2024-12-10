@@ -1,9 +1,11 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { globalStyles } from "../../constants/styles";
+import { logout } from "../../util/authentication";
 
 export const Profile = ({ navigation }) => {
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    await logout();
     navigation.reset({
       index: 0,
       routes: [{ name: "Login" }],
